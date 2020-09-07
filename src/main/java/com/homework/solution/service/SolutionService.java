@@ -57,6 +57,11 @@ public class SolutionService {
         return true;
     }
 
+    /**
+     * Creates an output file with solution for input file
+     * @param location
+     * @return
+     */
     public String solution(final String location) {
         initPaymentRepository(location);
         final String output = getOrderOfPayments();
@@ -70,6 +75,10 @@ public class SolutionService {
         return output;
     }
 
+    /**
+     * Read file from input otherwise log an error message
+     * @param fileName Absolute path as String
+     */
     private void initPaymentRepository(final String fileName) {
         LOGGER.info("Reading file {}", fileName);
         File file = new File(fileName);
@@ -83,6 +92,11 @@ public class SolutionService {
         }
     }
 
+    /**
+     * Reads input file
+     * @param fileName
+     * @throws IOException
+     */
     private void readFromInputFile(final String fileName) throws IOException {
         String line;
         BufferedReader bufReader = new BufferedReader(new FileReader(fileName));
@@ -94,6 +108,11 @@ public class SolutionService {
         bufReader.close();
     }
 
+    /**
+     * Cleans input record line and parses it to fill paymentRecord entity
+     * @param input One line from input file as String
+     * @return Optional<PaymentRecord>
+     */
     private Optional<PaymentRecord> cleanRecordLine(final String input) {
 
         final Pattern wholeInputLine = Pattern.compile("^.*,[\\s\\D]+/[\\s0-9]+,[\\s0-9-:]+$");
@@ -125,6 +144,10 @@ public class SolutionService {
         return Optional.empty();
     }
 
+    /**
+     * Lists payments and format the position number with proper decimal places
+     * @return Payments as string
+     */
     public String getOrderOfPayments() {
         final List<PaymentRecord> records = paymentRepository.getOrderedElements();
         final Map<String, Integer> maxForPartners = paymentRepository.getMaxForPartners();
@@ -139,6 +162,11 @@ public class SolutionService {
         return ret.toString();
     }
 
+    /**
+     * Computes number of significant digits for output formatting
+     * @param lastPartnerPosition Maximum partner position
+     * @return Number of significant digits as Integer
+     */
     private Integer numberOfSignificantDigits(final Integer lastPartnerPosition) {
         return lastPartnerPosition.toString().length();
     }

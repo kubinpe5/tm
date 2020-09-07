@@ -53,6 +53,9 @@ public class PaymentRepository {
         paymentRecords.add(paymentRecord);
     }
 
+    /**
+     * Sorts partners by date and add the order number as position
+     */
     public void addPositionForPartner() {
 
         final Map<String, List<PaymentRecord>> paymentsByPartner = paymentRecords.stream().collect(Collectors.groupingBy(PaymentRecord::getPartner));
@@ -66,8 +69,6 @@ public class PaymentRepository {
                         Map.Entry::getKey,
                         entry -> sortList(entry.getValue())
                 ));
-
-        // projdu ty záznamy a přidám přislušnej index k tomu záznamu podle pořadí ke klíči
 
         for (Map.Entry<String, List<PaymentRecord>> entry : timeSortedByPartner.entrySet()) {
             int i = 0;
