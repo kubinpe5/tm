@@ -1,0 +1,15 @@
+Netflix|02|payment weekly
+Apple|1|game Of Thrones
+Netflix|01|payment yearly
+Microsoft|2|Office 365
+Microsoft|1|Office 365
+Apple|2|payment weekly
+Microsoft|3|application Any.DO
+Netflix|03|new subscription
+Netflix|09|installation of Modem
+Netflix|07|Sport 02
+Netflix|06|monthly subscription
+Netflix|08|O2TV, SportTV
+Netflix|04|game Of thrones
+Netflix|05|yearly subscription
+Netflix|10|recharging of 987654321
